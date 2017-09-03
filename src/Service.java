@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Service {
@@ -10,7 +11,7 @@ public class Service {
             int nextChar = generator.nextInt(asciiEnd-asciiStart) + asciiStart;
             boolean isUnique = true;
             for(int i=0; i<counter;i++){
-                if(combination[i]-'0' == nextChar) {
+                if((int)combination[i] == nextChar) {
                     isUnique = false;
                     break;
                 }
