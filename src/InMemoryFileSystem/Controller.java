@@ -35,5 +35,9 @@ public class Controller {
         }
     }
 
+    public void cd(HashMap<String, String> args){
+        this.service.ChangeDirectory(args.get("path"));
+    }
+
 
 }

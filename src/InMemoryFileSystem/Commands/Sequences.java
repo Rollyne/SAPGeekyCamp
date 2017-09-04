@@ -8,14 +8,14 @@ public class Sequences {
     //Each command has Overload[] with Overloads containing String[] with parameters.
     private static HashMap<String, Overload[]> commands;
 
-    public static void Configure(){
+    public static void Configure() {
         commands = new HashMap<>();
 
-
-        commands.put("mkfile", new Overload[]{new Overload(new String[] {"name"})});
-        commands.put("mkdir", new Overload[]{new Overload(new String[] {"name"})});
-        commands.put("exit", new Overload[]{new Overload(new String[] {})});
-        commands.put("list", new Overload[]{new Overload(new String[] {})});
+        commands.put("mkfile", new Overload[]{new Overload(new String[]{"name"})});
+        commands.put("mkdir", new Overload[]{new Overload(new String[]{"name"})});
+        commands.put("exit", new Overload[]{new Overload(new String[]{})});
+        commands.put("list", new Overload[]{new Overload(new String[]{})});
+        commands.put("cd", new Overload[]{new Overload(new String[]{"path"})});
     }
 
     public static String[] SplitCommands(String input){

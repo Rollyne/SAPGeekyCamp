@@ -2,7 +2,7 @@ package InMemoryFileSystem.Entities.Abstract;
 
 public abstract class DirectoryNode implements IDirectoryNode, Comparable<DirectoryNode> {
 
-    protected String name;
+    private String name;
 
     public DirectoryNode(String name){
         setName(name);
