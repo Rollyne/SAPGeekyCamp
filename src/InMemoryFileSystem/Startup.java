@@ -15,9 +15,12 @@ public class Startup {
         Context context = new Context();
         Sequences.Configure();
 
+        System.out.printf("%s|\\| In-Memory File System |\\|%s\n","\u001B[32m", "\u001B[0m");
+        System.out.println("Use 'help' for commands.");
+
         while(true)
         {
-            System.out.print(context.getCurrentPath() + " >> ");
+            System.out.printf("%s %s %s>> %s","\u001B[35m",context.getCurrentPath(), "\u001B[36m", "\u001B[31m");
             String input = s.nextLine();
             try{
                 Command command = Sequences.MatchCommand(input);
@@ -25,17 +28,13 @@ public class Startup {
                     break;
                 Router.Route(command, context);
             } catch(NoSuchMethodException e){
-                System.out.println("Invalid command!");
-                continue;
+                System.out.println(Messages.InvalidCommand());
             } catch(IllegalAccessException e){
-                System.out.println("You do not have access to this method.");
-                continue;
+                System.out.println(Messages.NoAccessToCommand());
+            } catch(InvocationTargetException | NullPointerException e){
+                System.out.println(Messages.DirDoesNotExist());
             }
 
-        }
-
-        for (IDirectoryNode dn:context.getCurrentDirectory().getNodes()) {
-            System.out.println("File " + dn.getName());
         }
     }
 }

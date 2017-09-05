@@ -27,6 +27,14 @@ public class Context {
         return sb.toString();
     }
 
+    public LinkedList<Directory> getRawPath() {
+        return path;
+    }
+
+    public void setPath(LinkedList<Directory> path){
+        this.path = path;
+    }
+
     public Directory getCurrentDirectory() {
         return path.getLast();
     }

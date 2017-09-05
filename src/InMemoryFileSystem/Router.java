@@ -11,18 +11,12 @@ public class Router {
 
         Controller controller = new Controller(context);
         Method method = null;
-        try{
+        if (command.getArguments().size() > 0) {
+            method = controller.getClass().getDeclaredMethod(command.getName(), HashMap.class);
+            method.invoke(controller, command.getArguments());
+        } else {
             method = controller.getClass().getDeclaredMethod(command.getName());
             method.invoke(controller);
-            return;
-        } catch(NoSuchMethodException e){
-            method = controller.getClass().getDeclaredMethod(command.getName(), HashMap.class);
         }
-
-        if(method == null){
-            throw new NoSuchMethodException();
-        }
-
-        method.invoke(controller, command.getArguments());
     }
 }
