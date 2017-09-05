@@ -1,3 +1,5 @@
+package CowsAndBulls;
+
 public class Result {
 
     public Result(){}

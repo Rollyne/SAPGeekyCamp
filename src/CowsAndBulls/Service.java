@@ -1,25 +1,34 @@
-import java.util.Arrays;
+package CowsAndBulls;
+
 import java.util.Random;
 
 public class Service {
     public static char[] GetRandomCombination(int asciiStart, int asciiEnd, int amount){
         Random generator = new Random();
-
+        asciiEnd+=1;
         char[] combination = new char[amount];
         int counter = 0;
+
+        boolean[] isAlreadyIn = new boolean[asciiEnd-asciiStart];
+
         while(counter < amount){
             int nextChar = generator.nextInt(asciiEnd-asciiStart) + asciiStart;
-            boolean isUnique = true;
-            for(int i=0; i<counter;i++){
-                if((int)combination[i] == nextChar) {
-                    isUnique = false;
-                    break;
-                }
-            }
-            if(isUnique){
+            if(!isAlreadyIn[nextChar-asciiStart]){
+                isAlreadyIn[nextChar-asciiStart] = true;
                 combination[counter] = (char)(nextChar);
                 counter++;
             }
+//            boolean isUnique = true;
+//            for(int i=0; i<counter;i++){
+//                if((int)combination[i] == nextChar) {
+//                    isUnique = false;
+//                    break;
+//                }
+//            }
+//            if(isUnique){
+//                combination[counter] = (char)(nextChar);
+//                counter++;
+//            }
         }
 
         return combination;

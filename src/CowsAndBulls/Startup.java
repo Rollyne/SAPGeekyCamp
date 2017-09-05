@@ -1,12 +1,16 @@
+package CowsAndBulls;
+
 import java.util.Objects;
 import java.util.Scanner;
 
-public class CowsAndBulls {
+public class Startup {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        System.out.print("Choose what you want to guess\n1. Digits\n2. Lowercase Alphabet\n3. Uppercase alphabet\n>>");
+
 
         GameOption option = null;
+
+        System.out.print("Choose what you want to guess\n1. Digits\n2. Lowercase Alphabet\n3. Uppercase alphabet\n>>");
         boolean invalid = true;
         while (invalid) {
             int menuSelect = s.nextInt();
@@ -37,7 +41,7 @@ public class CowsAndBulls {
 
         char[] combination = Service.GetRandomCombination(option, count);
         System.out.println("Guess until you win or 0 for exit");
-        //System.out.println(new String(combination));
+        System.out.println(new String(combination));
         while (true) {
 
             System.out.println("Gimme a guess: ");
