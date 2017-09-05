@@ -2,28 +2,41 @@ package InMemoryFileSystem;
 
 import InMemoryFileSystem.Entities.Directory;
 
-import java.util.Stack;
+import java.util.LinkedList;
 import java.util.TreeSet;
 
 public class Context {
+
+    private LinkedList<Directory> path;
+
     Context(){
-
-        setCurrentDirectory(new Directory(new TreeSet<>(), "root"));
-
+        this.path = new LinkedList<>();
+        stepIntoDirectory(new Directory(new TreeSet<>(), "root"));
     }
     Context(Directory dir){
-        setCurrentDirectory(dir);
+        this.path = new LinkedList<>();
+        stepIntoDirectory(dir);
     }
-    private Stack<String> path;
 
-    private Directory currentDirectory;
+    public String getCurrentPath(){
+        StringBuilder sb = new StringBuilder();
+        for(Directory dir : path){
+            sb.append(dir.getName()).append("/");
+        }
+
+        return sb.toString();
+    }
 
     public Directory getCurrentDirectory() {
-        return currentDirectory;
+        return path.getLast();
     }
 
-    public void setCurrentDirectory(Directory currentDirectory) {
+    public void stepIntoDirectory(Directory directory) {
 
-        this.currentDirectory = currentDirectory;
+        this.path.add(directory);
+    }
+
+    public void stepOutOfDirectory(){
+        this.path.removeLast();
     }
 }

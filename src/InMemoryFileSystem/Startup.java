@@ -17,6 +17,7 @@ public class Startup {
 
         while(true)
         {
+            System.out.print(context.getCurrentPath() + " >> ");
             String input = s.nextLine();
             try{
                 Command command = Sequences.MatchCommand(input);

@@ -23,4 +23,6 @@ public class Directory extends DirectoryNode {
     public void addNode(IDirectoryNode node){
         this.nodes.add(node);
     }
+
+    public void removeNode(IDirectoryNode node){this.nodes.remove(node);}
 }
