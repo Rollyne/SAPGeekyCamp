@@ -3,7 +3,7 @@ package CowsAndBulls;
 import java.util.Random;
 
 public class Service {
-    public static char[] GetRandomCombination(int asciiStart, int asciiEnd, int amount){
+    public static char[] getRandomCombination(int asciiStart, int asciiEnd, int amount){
         Random generator = new Random();
         asciiEnd+=1;
         char[] combination = new char[amount];
@@ -18,37 +18,26 @@ public class Service {
                 combination[counter] = (char)(nextChar);
                 counter++;
             }
-//            boolean isUnique = true;
-//            for(int i=0; i<counter;i++){
-//                if((int)combination[i] == nextChar) {
-//                    isUnique = false;
-//                    break;
-//                }
-//            }
-//            if(isUnique){
-//                combination[counter] = (char)(nextChar);
-//                counter++;
-//            }
         }
 
         return combination;
     }
 
-    public static char[] GetRandomCombination(GameOption option, int count){
+    public static char[] getRandomCombination(GameOption option, int count){
         switch(option) {
             case Digits:
-                return GetRandomCombination(48, 57, count);
-            case LowercaseAlphabet:
-                return GetRandomCombination(97, 122, count);
-            case UppercaseAlphabet:
-                return GetRandomCombination(65, 90, count);
+                return getRandomCombination('1', '9', count);
+            case LOWERCASE_ALPHABET:
+                return getRandomCombination('a', 'z', count);
+            case UPPERCASE_ALPHABET:
+                return getRandomCombination('A', 'Z', count);
             default:
                 throw new IllegalArgumentException("You should choose a valid game option.");
 
         }
     }
 
-    public static Result GetResult(char[] generated, char[] guess) {
+    public static Result getResult(char[] generated, char[] guess) {
         int bullsCount=0;
         int cowsCount =0;
         for(int i=0; i<generated.length; i++){

@@ -1,7 +1,7 @@
 package CowsAndBulls;
 
 public enum GameOption {
-    LowercaseAlphabet,
-    UppercaseAlphabet,
-    Digits
+    LOWERCASE_ALPHABET,
+    UPPERCASE_ALPHABET,
+    DIGITS
 }

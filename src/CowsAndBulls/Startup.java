@@ -20,10 +20,10 @@ public class Startup {
                     option = GameOption.Digits;
                     break;
                 case 2:
-                    option = GameOption.LowercaseAlphabet;
+                    option = GameOption.LOWERCASE_ALPHABET;
                     break;
                 case 3:
-                    option = GameOption.UppercaseAlphabet;
+                    option = GameOption.UPPERCASE_ALPHABET;
                     break;
                 default:
                     System.out.println("Invalid option.");
@@ -39,7 +39,7 @@ public class Startup {
         }
         s.nextLine();
 
-        char[] combination = Service.GetRandomCombination(option, count);
+        char[] combination = Service.getRandomCombination(option, count);
         System.out.println("Guess until you win or 0 for exit");
         System.out.println(new String(combination));
         while (true) {
@@ -51,7 +51,7 @@ public class Startup {
                 break;
             }
 
-            Result result = Service.GetResult(combination, input.toCharArray());
+            Result result = Service.getResult(combination, input.toCharArray());
             System.out.printf("%d Bulls and %d Cows\n", result.getBulls(), result.getCows());
             if (result.isSucceess()) {
                 System.out.println("GREAT! You win.. nothing. Cya!");
