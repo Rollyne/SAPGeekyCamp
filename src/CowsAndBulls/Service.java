@@ -25,7 +25,7 @@ public class Service {
 
     public static char[] getRandomCombination(GameOption option, int count){
         switch(option) {
-            case Digits:
+            case DIGITS:
                 return getRandomCombination('1', '9', count);
             case LOWERCASE_ALPHABET:
                 return getRandomCombination('a', 'z', count);
