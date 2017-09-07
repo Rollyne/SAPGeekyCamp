@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
-public class StudentsController extends Controller<Student> {
+public class StudentsController extends CrudController<Student> {
     StudentsController() throws SQLException {
     }
 
@@ -30,6 +30,9 @@ public class StudentsController extends Controller<Student> {
     @Override
     public int details() throws IllegalAccessException, SQLException {
         int id = super.details();
+        if(id < 0){
+            return -1;
+        }
         Scanner s = new Scanner(System.in);
         while(true){
             System.out.println("1. Enroll to course");

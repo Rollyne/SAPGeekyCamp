@@ -11,16 +11,16 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
-public abstract class Controller<TEntity extends Identificatable> {
+public abstract class CrudController<TEntity extends Identificatable> {
 
     protected ICrudService<TEntity> service;
     private Supplier<? extends TEntity> entityConstructor;
 
-    Controller(ICrudService<TEntity> service){
+    CrudController(ICrudService<TEntity> service){
         this.service = service;
         entityConstructor = setupEntityConstructor();
     }
-    Controller() throws SQLException {
+    CrudController() throws SQLException {
         setupService();
         entityConstructor = setupEntityConstructor();
     }
@@ -160,7 +160,7 @@ public abstract class Controller<TEntity extends Identificatable> {
         ExecutionResult<TEntity> execution = this.service.getById(id);
         if(!execution.succeeded){
             System.out.println(execution.message);
-            return id;
+            return -1;
         }
         Field[] fields = execution.result.getClass().getDeclaredFields();
         printItem(fields, execution.result);

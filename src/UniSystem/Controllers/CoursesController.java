@@ -7,7 +7,7 @@ import UniSystem.Services.CrudService;
 import java.sql.SQLException;
 import java.util.function.Supplier;
 
-public class CoursesController extends Controller<Course> {
+public class CoursesController extends CrudController<Course> {
     CoursesController() throws SQLException {
     }
 

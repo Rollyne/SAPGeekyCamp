@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class FacultyRepository extends Repository<Faculty> {
-    public FacultyRepository(IDbContext context, Supplier<? extends Faculty> entityConstructor, String pluralFormOfEntity) {
+public class FacultiesRepository extends Repository<Faculty> {
+    public FacultiesRepository(IDbContext context, Supplier<? extends Faculty> entityConstructor, String pluralFormOfEntity) {
         super(context, entityConstructor, pluralFormOfEntity);
     }
 

@@ -1,12 +1,10 @@
 package UniSystem.Controllers;
 
-import UniSystem.Entities.Course;
 import UniSystem.Entities.Faculty;
 import UniSystem.Entities.Student;
 import UniSystem.Repositories.UnitOfWork;
 import UniSystem.Services.CrudService;
 import UniSystem.Services.FacultiesService;
-import UniSystem.Services.StudentsCoursesService;
 import UniSystem.Services.Tools.ExecutionResult;
 
 import java.sql.SQLException;
@@ -14,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
-public class FacultiesController extends Controller<Faculty> {
+public class FacultiesController extends CrudController<Faculty> {
     FacultiesController() throws SQLException {
     }
 

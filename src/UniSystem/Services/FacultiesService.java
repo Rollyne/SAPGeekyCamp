@@ -2,7 +2,7 @@ package UniSystem.Services;
 
 import UniSystem.Entities.Faculty;
 import UniSystem.Entities.Student;
-import UniSystem.Repositories.FacultyRepository;
+import UniSystem.Repositories.FacultiesRepository;
 import UniSystem.Repositories.UnitOfWork;
 import UniSystem.Services.Tools.ExecutionResult;
 import UniSystem.Services.Tools.Messages;
@@ -21,7 +21,7 @@ public class FacultiesService extends CrudService<Faculty> {
         ExecutionResult<List<Student>> execution = new ExecutionResult<>();
 
         try{
-            FacultyRepository repo = new UnitOfWork().getFacultyRepository();
+            FacultiesRepository repo = new UnitOfWork().getFacultyRepository();
             repo.getStudents(facultyId);
 
             execution.succeeded = true;

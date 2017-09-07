@@ -1,9 +1,5 @@
 package UniSystem.Controllers;
 
-import UniSystem.Entities.Course;
-import UniSystem.Entities.Faculty;
-import UniSystem.Entities.Student;
-
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -21,15 +17,15 @@ public class RootController {
 
             switch(input) {
                 case 1:
-                    Controller studentsCont = new StudentsController();
+                    CrudController studentsCont = new StudentsController();
                     studentsCont.run();
                     break;
                 case 2:
-                    Controller coursesCont = new CoursesController();
+                    CrudController coursesCont = new CoursesController();
                     coursesCont.run();
                     break;
                 case 3:
-                    Controller facultiesCont = new FacultiesController();
+                    CrudController facultiesCont = new FacultiesController();
                     facultiesCont.run();
                     break;
                 case 0:
