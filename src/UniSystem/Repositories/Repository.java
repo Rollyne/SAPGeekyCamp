@@ -1,6 +1,7 @@
 package UniSystem.Repositories;
 
 import UniSystem.Entities.Identificatable;
+import UniSystem.IDbContext;
 import UniSystem.UniSystemContext;
 
 import java.lang.reflect.Field;
@@ -14,10 +15,10 @@ import java.util.function.Supplier;
 
 public class Repository<TEntity extends Identificatable> implements IRepository<TEntity> {
 
-    private UniSystemContext context;
+    protected IDbContext context;
     private final Supplier<? extends TEntity> entityConstructor;
     private String pluralFormOfEntity;
-    public Repository(UniSystemContext context, Supplier<? extends TEntity> entityConstructor, String pluralFormOfEntity) {
+    public Repository(IDbContext context, Supplier<? extends TEntity> entityConstructor, String pluralFormOfEntity) {
         this.entityConstructor = Objects.requireNonNull(entityConstructor);
         this.context = context;
         this.pluralFormOfEntity = pluralFormOfEntity;
@@ -63,9 +64,13 @@ public class Repository<TEntity extends Identificatable> implements IRepository<
         return sql;
     }
 
-    public TEntity getById(int id) throws SQLException, IllegalAccessException {
+    public String getPluralFormOfEntity(){
+        return this.pluralFormOfEntity;
+    }
+
+    public TEntity getById(int id) throws SQLException, IllegalAccessException, IndexOutOfBoundsException {
         PreparedStatement cmd = context.getConnection().prepareStatement(
-                String.format("SELECT * FROM %s WHERE students.id = ?", this.pluralFormOfEntity));
+                String.format("SELECT * FROM %s WHERE %s.id = ?", this.pluralFormOfEntity, this.pluralFormOfEntity));
         cmd.setInt(1, id);
         ResultSet rs = cmd.executeQuery();
 

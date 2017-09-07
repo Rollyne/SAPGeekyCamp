@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class UniSystemContext {
+public class UniSystemContext implements IDbContext {
 
     private Connection connection;
 
@@ -13,6 +13,7 @@ public class UniSystemContext {
         createDatabaseIfNotExists();
     }
 
+    @Override
     public Connection getConnection(){
         return this.connection;
     }

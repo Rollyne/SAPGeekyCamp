@@ -23,4 +23,6 @@ public class Messages {
     public static String SuccessfullyDeleted(){
         return "The item was successfully deleted.";
     }
+    public static String SuccessfullyEnrolled() { return "The student was successfully enrolled to the course";}
+    public static String AllreadyEnrolledOrNoCourse(){return "The student is already enrolled to this course or the course does not exist.";}
 }

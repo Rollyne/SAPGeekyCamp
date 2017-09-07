@@ -9,4 +9,5 @@ public interface IRepository<TEntity> {
     void add(TEntity item) throws SQLException, IllegalAccessException ;
     void update(TEntity item) throws IllegalAccessException, SQLException;
     void delete(int id) throws SQLException;
+    String getPluralFormOfEntity();
 }

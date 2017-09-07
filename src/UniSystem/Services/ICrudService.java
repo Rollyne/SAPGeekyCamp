@@ -6,7 +6,7 @@ import UniSystem.Services.Tools.ExecutionResult;
 
 import java.util.List;
 
-public interface IService<TEntity extends Identificatable> {
+public interface ICrudService<TEntity extends Identificatable> {
     ExecutionInfo add(TEntity item);
 
     ExecutionResult<TEntity> getById(int id);
@@ -16,4 +16,6 @@ public interface IService<TEntity extends Identificatable> {
     ExecutionInfo update(TEntity item);
 
     ExecutionInfo delete(int id);
+
+    String getPluralFormOfEntity();
 }
